@@ -17,7 +17,10 @@ const medicalMenu = Markup.keyboard([
 // ==========================================
 // 4. المنطق البرمجي (Routing)
 // ==========================================
-bot.start((ctx) => ctx.reply(`مرحباً بك في *دليل فائزين منح روسيا* 🇷🇺🎓\nاختر القسم الذي تريد الاستفسار عنه:`, { parse_mode: 'Markdown', ...mainMenu }));
+bot.start((ctx) => {
+    const userName = ctx.from.first_name || 'عزيزي';
+    ctx.reply(`مرحباً بك يا ${userName} في *دليل فائزين منح روسيا* 🇷🇺🎓\nاختر القسم الذي تريد الاستفسار عنه:`, { parse_mode: 'Markdown', ...mainMenu });
+});
 bot.hears('🔙 القائمة الرئيسية', (ctx) => ctx.reply('اختر القسم الذي تريد الاستفسار عنه 📌:', mainMenu));
 
 bot.hears('📞 الدعم الفني', (ctx) => {
